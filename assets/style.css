@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+}
+
+body {
+    background-color:#dc6e33;
+}
+
+
+.start button {
+    font-size: 30px;
+    font-weight: 300;
+    color:#3D8550;
+    padding:15px 200px;
+    outline: none;
+    border:none;
+    border-radius: 15px;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color:#3014FE;
+    height: 50px;
+    font-size: 35px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.btnHeader {
+    background-color: #E1F882;
+    color:#3D8550;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-style:solid;
+    border-color: #3D8550;
+    border-width: 5px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.btn {
+    margin: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color:#3D8550
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btnHeader:hover {
+    background-color: coral;
+}
+
+//#mainDiv {
+    margin-left: 40%;
+    margin-right: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:70px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+#gridContainer {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr 2fr 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap:10px 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#start {
+    margin-top: 100%;
+    background-color: white;
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-style:solid;
+    border-color: black;
+    border-width: 5px;
+    height: 50px;
+    font-size: 25px;
+}
+#start:hover {
+    background-color: chartreuse;
+}
+
+#enterIntials {
+    grid-column: 1;
+    grid-row: 8;
+    font-size: 25px;
+    resize: none;
+}
+
+#scoreDisplay {
+    grid-column: 1;
+    grid-row: 6;
+    font-size: 25px;
+}
+
+
+#quizDisplay {
+    text-align: center;
+    align-self: baseline;
+    grid-column: 1;
+    grid-row: 1;
+    place-self: center;
+    font-size: 50px;
+}
+
+#submit {
+    grid-column: 4;
+    grid-row: 8;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20%;
+    border: 2;
+    background-color: aqua;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#quizstart {
+    grid-column: 4;
+    grid-row: 8;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20%;
+    border: 2;
+    background-color: aqua;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+}
