@@ -4,54 +4,25 @@
     margin:0;
 }
 
-body {
-    background-color:#dc6e33;
+#code-title {
+    text-align: center;
+    font-weight: bold;
 }
 
-.start_btn {
-    top:100%;
-    left:100px;
-    transform: translate(42%, 0%);
+.game-box {
+    background:#3D8550
 }
 
-.start_btn button {
-    font-size: 30px;
-    font-weight:200;
-    color:#dc6e33;
-    padding:5px 5px;
-    outline: none;
-    border:none;
-    border-radius: 15px;
+.answer-item {
     background:#3D8550;
-    cursor: pointer;
+    width:50%;
+    display:inline-block;
 }
 
-.title {
-    padding-left: 150px;
-    border-style: double;
+#btn-start {
+    font:bold;
+    color:#fff;
+    background: #dc6e33;
+    border-radius: 15px;
 }
-
-.buttons {
-    padding-left: 300px;
-    padding-top: 30px;
-}
-
-.quiz {
-    background:whitesmoke;
-
-}
-
-.restart {
-    background: aquamarine;
-}
-
-.restart:hover {
-    background: green;
-}
-
-.quiz:hover {
-    background:red
-}
-
-
 
