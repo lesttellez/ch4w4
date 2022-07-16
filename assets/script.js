@@ -58,10 +58,8 @@ btnScore.addEventListener("click" , function(){
     let name = document.getElementById("inputScore").value
     scorePage(name, count)
 });
-// Time set
 
 function gametime(){
-
     var timeinterval = setInterval(function(){
         timer.innerText = count
          count--;
@@ -76,7 +74,7 @@ function scorePage(a, b) {
     allScores.push(userData);
 
     localStorage.setItem("userData", JSON.stringify(allScores));
-    location.href = "score.html";
+    location.href = "./assets/score.html";
 }
 
 function displayQuestion(question){
