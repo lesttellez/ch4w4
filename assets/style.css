@@ -1,28 +1,50 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin:0;
-}
 
-#code-title {
+body{
     text-align: center;
-    font-weight: bold;
+    background: #dc6e33;
+    height: 150%;
 }
 
 .game-box {
-    background:#3D8550
+    background:#3D8550;
+    border-radius: 20px;
+    color:aquamarine;
+}
+
+.code-title {
+    color: #dc6e33;
+    font-size: 50px;
 }
 
 .answer-item {
     background:#3D8550;
     width:50%;
     display:inline-block;
+    padding:5px;
+    border-radius: 20px;
 }
 
 #btn-start {
     font:bold;
-    color:#fff;
+    font-size: 25px;
+    color:#3D8550;
     background: #dc6e33;
-    border-radius: 15px;
+    border-radius: 0px;
+    border-color: aquamarine;
+}
+#btn-start:hover {
+    background: aqua;
 }
 
+#timecounter {
+    color:#dc6e33;
+    font-size: 30px;
+}
+.btn-primary {
+    border-color: #dc6e33;
+    background-color: #3D8550;
+    border-radius: 5px;
+    font-size: 30px;
+    font-family: monospace;
+    padding-left: 25%;
+}

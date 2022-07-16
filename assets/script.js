@@ -1,94 +1,133 @@
-var quizStatus = true;
-var questionNumber = 0;
-var answerNumber = 0;
+var timer = document.getElementById("timer");
+var timecounter = document.getElementById("timecounter");
+var btnStart = document.getElementById("btn-start");
+var titleitem = document.getElementById("title-item");
+var quizQuestions = document.getElementById("quiz-questions");
+var questionanswers = document.getElementById("question-answers");
+var myScore = document.getElementById("score");
+var btnScore = document.getElementById("btnScore");
+var currentindex = 0;
 var score = 0;
-var highScore = 40; // Score add fix for ticking timer.
-var previewHighScoresBtnEl = document.getElementById('preview-high-scores');
-var startQuizBtnEl = document.getElementById('start-quiz');
-var answer1BtnEl = document.getElementById('answer1');
-var answer2BtnEl = document.getElementById('answer2');
-var answer3BtnEl = document.getElementById('answer3');
-var answer4BtnEl = document.getElementById('answer4'); 
-var submitEl = document.getElementById('submitScore'); // Start Quiz button Btn El
-var questionsEl = document.getElementById('questions'); // Questions for the main Div
-var mainDivEl = document.getElementById('mainDiv'); // Main div container for all elements except for header elements
-var htmlTimeLeft = document.getElementById('timeLeft'); // Display counter @ the html level.
-var answerCorrectWrong = document.getElementById('answerCorrectWrong'); // Display counter @ the html level.
-var questionDisplayEl = document.createElement("questionDisplay"); // Display Question
-var finalScoreDisplayEl = document.createElement("finalScoreDisplay"); // Display Question
-var enterInitialsEl = document.createElement("enterInitials"); // Enter initials
-var enterInitialsTextAreaEl = document.createElement("enterInitialsTextArea"); // TextArea
-var button1234 = document.createElement("button"); // Test answer 1
-
-
-answer1BtnEl.style.display = 'none';
-answer2BtnEl.style.display = 'none';
-answer3BtnEl.style.display = 'none';
-answer4BtnEl.style.display = 'none';
-submitScoreEl.style.display = 'none';
-answerCorrectWrong.style.display='none';
-enterInitialsTextArea.style.display='none';
-
-var questionsObject = { // Object that holds correct answers.
-    correct: { 
-        0 : "Commonly used datatypes DO NOT include?",
-        1 : "The condition statement if/else is enclosed with the following:",
-        2 : "Arrays can be used to store the following", // Button #4 for 
-        3 : "A very useful tool to debug arrays is:", // Button #3
-        4 : "Strings must be enclosed with:"
+var count = 75;
+var alert =document.getElementById("alert");
+var info = document.getElementById("info");
+var allScores = [];
+var storedScores = JSON.parse(localStorage.getItem("userData"));
+var questions = [
+    {
+        title: "Commonly used data type Do Not include:---",
+        choices: ["strings","booleance","alerts", "numbers"],
+        answer : "alerts"    
+    },
+    {
+        title: "The condition in an if/else statement is enclosed within:---",
+        choices: ["quotes","Curly brackets","parentheses", "square brackets"],
+        answer : "parentheses"    
+    },
+    {
+        title: "String values must be enclosed within --- when being assigned to variables ",
+        choices: ["commas","curly brackets","quotes","parentheses"],
+        answer : "quotes"    
+    },
+    {
+        title: "A very useful tool used during development and debugging for printing content to the debugger is:---",
+        choices: ["JavaScript","terminal/bash","alerts", "console.log"],
+        answer : "console.log"    
+    },
+    {
+        title: "Arrays in JavaScript can be used to store:---",
+        choices: ["numbers and strings","others Arrays","booleances", "all of the above"],
+        answer : "all of the above"    
+    },
+]
+btnStart.addEventListener("click", starQuiz);
+function starQuiz(){
+    if(storedScores !==null) {
+        allScores = storedScores;
     }
-};
+    info.classList.add("d-none")
+    btnStart.classList.add("d-none")
+    timecounter.classList.remove("d-none")
+    quizQuestions.classList.remove("d-none")
+    nextQuestions= questions[currentindex]
+    console.log(nextQuestions.title)
+        displayQuestion(nextQuestions)
+    gametime()
+}
+btnScore.addEventListener("click" , function(){
+    let name = document.getElementById("inputScore").value
+    scorePage(name, count)
+});
+// Time set
 
-var answersObject = { // Object that holds correct answers.
-    answers: { 
-        0 : {
-            0: "Strings",
-            1: "Boolean",
-            2: "Alerts",
-            3: "Numbers"},
-        1 : {
-            0: "Parentheses",
-            1: "Curly Brackets",
-            2: "Quotes",
-            3: "Square Brackets"},
-            2 : { // Button #3
-                0: "Javascript",
-                1: "Terminal/bash",
-                2: "For loops", 
-                3: "Console.log"},      
-            3 : { // Answer to question 5 --> Button #2
-                0: "Commas",
-                1: "Curly brackets",
-                2: "Quotes", 
-                3: "Parentheses"},      
-            4 : { // Button #4
-                0: "Number of strings",
-                1: "Other arrays",
-                2: "Booleans",
-                3: "All of the above"},  
-        }
+function gametime(){
+
+    var timeinterval = setInterval(function(){
+        timer.innerText = count
+         count--;
+        }, 1000);
+}
+
+function scorePage(a, b) {
+    var userData = {
+        inits: a,
+        userScore: b
     };
-    
-    //Initialize the display timer at default value
-    htmlTimeLeft.textContent = timeLeft;
-    
-    viewHighScoresBtnEl.addEventListener("click", function() { // View high scores
-    
-        var quizUsers = "";
-        var substringTest ="";
-        var highScores = "";
-        for (var i=0; i < localStorage.length; i++) {
-            var checkUserValue = [];
-            
-            quizUsers = localStorage.getItem(localStorage.key(i));
-            substringTest = quizUsers.substring(0,4) 
-            if (substringTest == "quiz") {
-                checkUserValue = quizUsers.split(",");
-                var userName = checkUserValue[0]
-                highScores += "User " + userName.substring(4) + " high score is: " + checkUserValue[1] + "\n";
-           }
-        }
-        window.alert(highScores);
-    
+    allScores.push(userData);
+
+    localStorage.setItem("userData", JSON.stringify(allScores));
+    location.href = "score.html";
+}
+
+function displayQuestion(question){
+    titleitem.innerText=question.title
+    question.choices.forEach(element => {
+     var button =document.createElement("button")
+    button.className="btn-primary btn-block text-left"
+    button.innerText=element
+    questionanswers.appendChild(button)
+    button.addEventListener("click", displaynextQuestion)
     });
+}
+
+function displaynextQuestion(e){
+    currentindex++
+    if(currentindex < questions.length){
+        correction(e.target.innerText == nextQuestions.answer)
+        questionanswers.innerHTML=""
+        if(currentindex < questions.length){    
+            nextQuestions= questions[currentindex]
+            displayQuestion(nextQuestions)  
+        }else {
+            currentindex = 0
+            displayQuestion(nextQuestions)  
+        }
+
+    }else{
+        console.log("endgame")
+        endgame()
+    }
+}
+function correction(response){
+    if(response){
+        alert.innerText= "Great"
+        console.log("Great")
+    }else {
+        alert.innerText="Wrong"
+        count = count -15
+        timer.innerHTML = count
+        console.log("Wrong")
+
+    }
+    setTimeout(function(){
+        alert.innerText=""
     
+        }, 1000);
+}
+ function endgame (){
+    myScore.innaText = count
+    addscore.classList.remove("d-none")
+    timecounter.classList.add("d-none")
+    quizQuestions.classList.add("d-none")
+    addscore.classList.remove("d-none")
+ }
