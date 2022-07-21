@@ -26,7 +26,12 @@ THEN I can save my initials and my score
 
 --------------------------------------------------------------------------------
 
-in order to accomplish this challenge, i first created my index.html which i utilized the tool bootstrap to make up the main startup page and from there to leyout the page afterwared (which are the code questions and 4 options to choose from, as well to display the timer.)
+i created an index.html and used bootstrap framework for the look of my pages.
+
+you will start with the start button page, then from there you will have a couple multiple choice questions and at the end you will have the ability to inout your intials and store your top score(s). 
+there is also a time count down and time deduction (for wrong answers) when answering the code questions.
+
+
 
 ![codequiz](./assets/images/codequiz.png)
 
