@@ -22,7 +22,7 @@ function displayScores() {
 displayScores();
 
 backBtn.addEventListener("click", function () {
-    location.href = "index.html";
+    location.href = "../index.html";
 });
 
 clearBtn.addEventListener("click", function () {
